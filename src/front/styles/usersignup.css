@@ -1,0 +1,118 @@
+/* Estilos generales para el contenedor */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f7f7f7;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Caja del formulario */
+  .card {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding: 30px;
+  }
+  
+  /* Título del formulario */
+  h2.mb-4 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Estilo para cada campo de formulario */
+  .form-control {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* Estilo para cuando el campo está enfocado */
+  .form-control:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Botón de registro */
+  button[type="button"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover del botón de registro */
+  button[type="button"]:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilos para el modal de éxito */
+  .modal-content {
+    border-radius: 10px;
+  }
+  
+  .modal-header {
+    background-color: #4caf50; /* Color verde de éxito */
+    color: #fff;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .modal-body {
+    text-align: center;
+    color: #333;
+  }
+  
+  .modal-footer {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .modal-footer .btn-secondary {
+    background-color: #4caf50;
+    border-color: #4caf50;
+  }
+  
+  .modal-footer .btn-secondary:hover {
+    background-color: #388e3c;
+    border-color: #388e3c;
+  }
+  
+  /* Estilos para el modal de error */
+  .modal-header {
+    background-color: #f44336; /* Color rojo de error */
+  }
+  
+  .modal-footer .btn-secondary {
+    background-color: #f44336;
+    border-color: #f44336;
+  }
+  
+  .modal-footer .btn-secondary:hover {
+    background-color: #d32f2f;
+    border-color: #d32f2f;
+  }
+  
+  /* Mensaje de error en el formulario */
+  .error-message {
+    color: #f44336;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  

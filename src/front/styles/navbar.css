@@ -1,0 +1,61 @@
+/* Fondo y diseño general de la barra de navegación */
+.custom-navbar {
+    background: linear-gradient(90deg, #6a5acd, #483d8b); /* Degradado de índigo a azul oscuro */
+    color: #ffffff;
+    padding: 15px 20px;
+    font-family: "Arial", sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Contenedor principal */
+.custom-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Logo de la marca */
+.custom-brand {
+    text-decoration: none;
+}
+
+.custom-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: transform 0.3s ease;
+}
+
+.custom-logo:hover {
+    transform: scale(1.1); /* Efecto de aumento */
+}
+
+/* Links de navegación */
+.custom-links {
+    display: flex;
+    gap: 15px; /* Espaciado entre los enlaces */
+}
+
+.custom-nav-item {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.custom-nav-item:hover {
+    background-color: #ff7e5f; /* Fondo naranja claro */
+    color: #ffffff;
+    transform: scale(1); }
