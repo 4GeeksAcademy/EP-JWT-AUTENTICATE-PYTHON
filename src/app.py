@@ -93,11 +93,12 @@ def signin():
     data = request.get_json()
     user = User.query.filter_by(email=data.get("email")).first()
 
-    # Verificación de credenciales
     if user and bcrypt.check_password_hash(user.password, data.get("password")):
+        # Generar token JWT
         access_token = create_access_token(identity=user.id)
         return jsonify({"token": access_token, "user_id": user.id}), 200
     return jsonify({"msg": "Usuario o contraseña incorrectos."}), 401
+
 
 # Cerrar sesión
 @app.route("/logout", methods=["POST"])
@@ -109,17 +110,36 @@ def logout():
 @app.route("/userprofile/<int:user_id>", methods=["GET"])
 @jwt_required()
 def private(user_id):
-    current_user_id = get_jwt_identity()
-    
-    if current_user_id != user_id:
-        return jsonify({"message": "Acceso no autorizado"}), 403
-    
-    user = User.query.get(user_id)
-    if not user:
-        return jsonify({"message": "Usuario no encontrado"}), 404
-    
-    response_data = {key: getattr(user, key) for key in ['id', 'email', 'nombre', 'apellido', 'ciudad', 'is_active']}
-    return jsonify(response_data), 200
+    try:
+        # Obtener el ID del usuario del token JWT
+        current_user_id = get_jwt_identity()
+        if not isinstance(current_user_id, str):
+            raise ValueError("El token JWT debe contener un string como identidad.")
+
+        # Validar que el usuario autenticado coincide con el solicitado
+        if current_user_id != str(user_id):
+            return jsonify({"message": "Acceso no autorizado"}), 403
+
+        # Buscar usuario en la base de datos
+        user = User.query.get(user_id)
+        if not user:
+            return jsonify({"message": "Usuario no encontrado"}), 404
+
+        # Serializar y devolver los datos del usuario
+        return jsonify({
+            "id": user.id,
+            "email": user.email,
+            "nombre": user.nombre,
+            "apellido": user.apellido,
+            "ciudad": user.ciudad,
+            "is_active": user.is_active
+        }), 200
+
+    except Exception as e:
+        app.logger.error(f"Error en el endpoint /userprofile: {str(e)}")
+        return jsonify({"message": "Error interno del servidor"}), 500
+
+
 
 # Endpoint protegido
 @app.route("/protected", methods=["GET"])
